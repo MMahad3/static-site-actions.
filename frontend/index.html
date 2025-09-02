@@ -3,38 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Static Website</title>
+  <title>Deploy Static Website with GitHub Actions</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Welcome to My Static Site 🚀</h1>
-    <p>This site is deployed automatically with GitHub Actions</p>
+    <h1>🚀 CI/CD with GitHub Actions</h1>
+    <p>A simple guide to deploying your static website on AWS S3 + CloudFront</p>
   </header>
 
   <main>
     <section class="card">
-      <h2>About</h2>
-      <p>This is a simple static page created with HTML + CSS.</p>
+      <h2>Step 1: Create Your Repository</h2>
+      <p>
+        Start by creating a new GitHub repository. Add your static website files 
+        (<code>index.html</code>, <code>style.css</code>, images, etc.) and push them to GitHub.
+      </p>
     </section>
 
     <section class="card">
-      <h2>Why?</h2>
-      <p>To learn GitHub Actions CI/CD workflows and automation.</p>
+      <h2>Step 2: Set Up an S3 Bucket</h2>
+      <p>
+        On AWS, create an S3 bucket to store your static site. Enable static website hosting 
+        and note the bucket name.  
+        (Tip: Keep the bucket private and use CloudFront for secure delivery.)
+      </p>
     </section>
 
     <section class="card">
-      <h2>Next Steps</h2>
+      <h2>Step 3: Configure GitHub Actions</h2>
+      <p>
+        Inside your repo, create a folder <code>.github/workflows</code> and add a 
+        <code>deploy.yml</code> file.  
+        Define a workflow that:
+      </p>
       <ul>
-        <li>✅ Create a repo</li>
-        <li>✅ Push code</li>
-        <li>🚀 Deploy with GitHub Actions</li>
+        <li>Triggers on every push to <code>main</code></li>
+        <li>Installs AWS CLI</li>
+        <li>Syncs your files to the S3 bucket</li>
       </ul>
+    </section>
+
+    <section class="card">
+      <h2>Step 4: Add AWS Credentials</h2>
+      <p>
+        In GitHub, go to your repo settings → <b>Secrets and Variables</b>.  
+        Add your <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code>.  
+        This allows GitHub Actions to deploy files securely to AWS.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Step 5: Set Up CloudFront + Route 53</h2>
+      <p>
+        Use AWS CloudFront to distribute your site globally with caching and HTTPS.  
+        Connect your custom domain in Route 53 and link it to the CloudFront distribution.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Step 6: Commit & Deploy</h2>
+      <p>
+        Push your code to GitHub.  
+        GitHub Actions will automatically build and deploy your static site to S3 + CloudFront.  
+        Open your domain, and 🎉 your website is live!
+      </p>
     </section>
   </main>
 
   <footer>
-    <p>Built with ❤️ | 2025</p>
+    <p>Made with ❤️ | Learn, Build, Automate | 2025</p>
   </footer>
 </body>
 </html>
